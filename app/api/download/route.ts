@@ -1,0 +1,2 @@
+import {streamSource,errorResponse} from '../media/source';
+export async function POST(request:Request) {try {return await streamSource(Object.fromEntries(await request.formData()),request,true);} catch(e) {const r=errorResponse(e);const data=await r.json() as {error:string};return new Response('<!doctype html><meta charset="utf-8"><script>parent.postMessage('+JSON.stringify({type:'emby-download-error',error:data.error})+',location.origin)</script><p>'+data.error+'</p>',{status:r.status,headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'}});}}

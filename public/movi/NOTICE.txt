@@ -1,0 +1,8 @@
+Movi Player 0.4.1 by Ujjwal G, Apache-2.0, with its third-party license notices in LICENSE.
+Unmodified embedded-Wasm programmatic player:
+https://registry.npmjs.org/movi-player/-/movi-player-0.4.1.tgz
+Corresponding sources and FFmpeg build recipes:
+https://github.com/MrUjjwalG/movi-player/tree/eaaa3088aba65454176a180ece2a2ef2af513fa3
+https://github.com/MrUjjwalG/movi-player/tree/eaaa3088aba65454176a180ece2a2ef2af513fa3/docker
+FFmpeg n8.1.2 is LGPL-2.1-or-later; exact source and relinking instructions are included in LICENSE and the upstream build recipes.
+The separate player.js module may be replaced with a rebuilt equivalent.

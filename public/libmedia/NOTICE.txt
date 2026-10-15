@@ -1,0 +1,11 @@
+libmedia AVPlayer 1.3.1 by Gaoxing Zhao, LGPL-3.0.
+Unmodified UMD build: https://registry.npmjs.org/@libmedia/avplayer/-/avplayer-1.3.1.tgz
+Corresponding library sources, Wasm resources, and build scripts:
+https://github.com/zhaohappy/libmedia/tree/v1.3.1
+https://github.com/zhaohappy/libmedia/archive/refs/tags/v1.3.1.tar.gz
+Codec dependencies and license notices:
+https://github.com/zhaohappy/libmedia/blob/v1.3.1/README_en.md#license
+FFmpeg sources and build inputs are referenced by that project's build scripts.
+Only decoder/resampler/stretchpitch modules are included. No GPL x264/x265 encoders are included.
+The JavaScript chunks and Wasm modules are separate replaceable files under public/libmedia/.
+Users may replace them or rebuild the library from the corresponding sources.
