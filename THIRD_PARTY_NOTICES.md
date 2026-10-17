@@ -6,6 +6,7 @@ Emby Flow 原创代码使用根目录 MIT 许可。下列依赖及分发文件�
 | --- | --- | --- |
 | libmedia AVPlayer 1.3.1 | `public/libmedia/` | LGPL-3.0；完整许可见 `COPYING.LGPLv3`，源码及构建信息见 `NOTICE.txt` |
 | Movi Player 0.4.1 | `public/movi/` | Apache-2.0 及其第三方许可，见 `LICENSE` 和 `NOTICE.txt`；包含 FFmpeg LGPL 组件，按上游许可及重新链接要求分发 |
+| Mediabunny 1.61.6 | `public/mediabunny/` | MPL-2.0；未修改的独立 ESM 包，完整许可及对应源码入口见 `LICENSE`、`NOTICE.txt` |
 | hls.js | `public/hls.min.js` | Apache-2.0，见 `public/HLS-LICENSE.txt` |
 | Sites 构建插件 | `build/sites-vite-plugin.ts` | 见 `build/sites-vite-plugin.LICENSE` |
 | shadcn Tailwind 样式 | `vendor/` | 见 `vendor/shadcn-tailwind-4.13.0.LICENSE.md` |

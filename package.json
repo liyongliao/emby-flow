@@ -69,7 +69,7 @@
       "sharp": "0.35.4"
     }
   },
-  "description": "Emby 在线播放器与批量下载器，支持多服务器、整季下载、分段选集和兼容解码。",
+  "description": "Emby 在线播放器与批量下载器，支持多服务器、整季下载、按时间下载片段、分段选集和兼容解码。",
   "license": "MIT",
   "repository": {
     "type": "git",

@@ -1,0 +1,6 @@
+Mediabunny 1.61.6 by Vanilagy. Mozilla Public License 2.0.
+Unmodified ESM bundle (dist/bundles/mediabunny.min.mjs):
+https://registry.npmjs.org/mediabunny/-/mediabunny-1.61.6.tgz
+Corresponding source is included in that archive under src/:
+https://github.com/Vanilagy/mediabunny
+This separate, replaceable module is used for indexed reads and lossless clip remuxing.

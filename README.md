@@ -5,7 +5,7 @@
 ### 想看的，在线播放。喜欢的，批量带走。
 
 一款以 **视频下载** 和 **在线播放** 为核心的 Emby 网页客户端。  
-多集勾选、整季下载、播放源解析、大画面播放器，一个界面完成。
+多集勾选、整季下载、按时间下载片段、大画面播放器，一个界面完成。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-bee977?style=flat-square)](LICENSE)
 [![Node.js ≥22.13](https://img.shields.io/badge/Node.js-%E2%89%A522.13-405b32?style=flat-square)](package.json)
@@ -21,6 +21,7 @@
 
 ## 下载，是第一优先级
 
+- **只下载片段**：在播放器中拖动选择起止时间，或用当前位置标记，导出原画质 MP4 / MKV；按索引读取所需范围，不必先保存整部影片。
 - **单个视频下载**：在详情页或播放器中直接加入下载队列。
 - **多集批量下载**：勾选需要的集数，支持跨分段选择；也可以选择本段全部集数。
 - **整季一键下载**：一次加入整季，按顺序逐集处理，不同时拉取大量视频。
@@ -31,6 +32,14 @@
 下载仍受账号、服务器和上游来源的实际访问限制；临时链接在任务开始时获取，失效后可重试。请用于你拥有或获准保存的媒体。
 
 ![剧集分段选择与批量下载](docs/images/episodes.png)
+
+### 留下需要的几秒、几分钟
+
+打开播放器右侧 **✂ 下载片段**，设置开始 / 结束时间，点击 **导出所选片段**。支持输入毫秒、拖动定位和用当前播放位置标记；导出时暂停播放，显示实际读取与生成大小，可随时取消。
+
+![播放器中选择起止时间并导出片段](docs/images/clip-download.png)
+
+保留主视频与默认音轨，不转码、不包含字幕。MP4 使用时间裁切信息，MKV 起点对齐此前关键帧；部分剪辑软件可能显示边界外的少量画面，可在导入后精修。需要片源具有可用索引并正确支持 Range；不满足时会停止，不自动改成整部下载。详见 [片段下载教程](docs/usage.md#6-只下载需要的片段)。
 
 ## 在线播放，同样认真
 
@@ -87,7 +96,7 @@ npm run dev -- --port 8787
 ## 开发与验证
 
 ```bash
-npm test                 # 下载队列与地址识别测试
+npm test                 # 片段导出、下载队列与地址识别测试
 npm run typecheck        # TypeScript 类型检查
 npm run build            # 生产构建
 ```
@@ -98,6 +107,8 @@ app/page.tsx             页面结构
 app/globals.css          响应式界面
 public/app.js            媒体库、选集与播放器交互
 public/flow-queue.js      顺序下载、暂停、续传与队列持久化
+public/flow-clip.js       按索引读取与无损片段封装
+public/flow-clip-ui.js    片段时间选择、导出与取消
 public/flow-storage.js    本地账号与加密密码管理
 public/flow-servers.js    地址识别与服务器名称获取
 public/flow-advanced.js   增强兼容播放适配

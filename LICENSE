@@ -21,6 +21,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 Third-party software and assets retain their own licenses. In particular,
-public/libmedia, public/movi, public/hls.min.js, build/sites-vite-plugin.ts,
+public/libmedia, public/movi, public/mediabunny, public/hls.min.js,
+build/sites-vite-plugin.ts,
 and vendor/ are governed by their accompanying notices and licenses.
 See THIRD_PARTY_NOTICES.md.

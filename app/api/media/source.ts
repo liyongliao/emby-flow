@@ -1,3 +1,4 @@
+import {clipRange,matchesClipRange} from '../../../lib/clip-range.mjs';
 import {publicURL,serverBase,authHeaders,embyFetch,MediaError,id,errorResponse} from './remote';
 export {errorResponse,MediaError} from './remote';
 export const profile={Name:'Emby Flow Source',MaxStreamingBitrate:160000000,DirectPlayProfiles:[{Container:'mp4,m4v,mkv,webm',VideoCodec:'h264,hevc,vp8,vp9,av1',AudioCodec:'aac,mp3,opus,vorbis,ac3,eac3,dts,truehd',Type:'Video'}],TranscodingProfiles:[]};
@@ -38,10 +39,13 @@ export async function resolveSource(input: Record<string,unknown>, ua: string) {
   throw new MediaError('视频源的跳转次数过多。',502);
 }
 export async function streamSource(input: Record<string,unknown>,request:Request,download=false) {
+  let partial:null|{start:number,end:number}=null;
+  if(input.clip==='1'){try{partial=clipRange(request.headers.get('range'))}catch(e){throw new MediaError((e as Error).message,400)}}
   const resolved=await resolveSource(input,request.headers.get('user-agent')||'');
   const headers:Record<string,string>={...resolved.headers};
   const range=request.headers.get('range');if(range) headers.Range=range;
   const upstream=await fetch(resolved.url,{headers,signal:request.signal,redirect:'manual'});
+  if(partial&&!matchesClipRange(upstream,partial)){await upstream.body?.cancel();throw new MediaError('视频源未正确支持分段读取，已停止导出。',422)}
   if(!upstream.ok) {await upstream.body?.cancel();throw new MediaError('文件请求失败（'+upstream.status+'），请重试。',502);}
   const out=new Headers({'Cache-Control':'private, no-store','Referrer-Policy':'no-referrer','X-Content-Type-Options':'nosniff'});
   for(const key of ['content-length','content-range','accept-ranges','content-type']) {const value=upstream.headers.get(key);if(value)out.set(key,value);}
